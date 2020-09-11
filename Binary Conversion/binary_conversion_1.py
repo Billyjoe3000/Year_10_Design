@@ -3,12 +3,13 @@ import tkinter as tk
 print("Stage 1")
 
 def conversion(*args):
-	print("working")
+	print("conversion function")
 
 	val = ent_value.get()
 	print(val)
 
 	# Check to ensure it's just 0s and 1s
+
 
 	ent_value.delete(0,tk.END)
 
