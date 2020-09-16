@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Piano Scale Generator</title>
+
+	<style>
+		#title {
+			background-color: #000;
+			color: #fff;
+			padding: 3px 6px;
+		}
+	</style>
+</head>
+<body>
+	
+	<p id = "title">Piano Scale Generator</p>
+	<br/>
+
+	<label>Select Scale</label>
+	<select id = "scale_select">
+		<option value = "1">Major</option>
+		<option value = "2">Minor</option>
+	</select>
+
+	<br/>
+	<br/>
+
+	<label>Select Key</label>
+	<select id = "scale_key">
+      <option value = "3">C</option>
+      <option value = "4">C#</option>
+      <option value = "5">D</option>
+      <option value = "6">D#</option>
+      <option value = "7">E</option>
+      <option value = "8">F</option>
+      <option value = "9">F#</option>
+      <option value = "10">G</option>
+      <option value = "11">G#</option>
+	  <option value = "0">A</option>
+      <option value = "1">A#</option>
+      <option value = "2">B</option>
+	</select>
+
+	<br/>
+	<br/>
+
+	<input type = "submit">
+
+	<br/>
+
+	<canvas id = "keyCanvas" width = "310" height = "130" style = "border:1px solid #000000;">
+	</canvas>
+
+	<script>
+
+		//********** This section draws the piano keys **********
+	    //gets canvas widget
+		  var c = document.getElementById("keyCanvas");
+		  var ctx = c.getContext("2d");
+  
+
+		  //white keys
+		  ctx.beginPath();
+		  ctx.rect(5, 5, 20,100);
+		  ctx.rect(25, 5, 20,100);
+		  ctx.rect(45, 5, 20,100);
+		  ctx.rect(65, 5, 20,100);
+		  ctx.rect(85, 5, 20,100);
+		  ctx.rect(105, 5, 20,100);
+		  ctx.rect(125, 5, 20,100);
+		  ctx.rect(145, 5, 20,100);
+		  ctx.rect(165, 5, 20,100);
+		  ctx.rect(185, 5, 20,100);
+		  ctx.rect(205, 5, 20,100);
+		  ctx.rect(225, 5, 20,100);
+		  ctx.rect(245, 5, 20,100);
+		  ctx.rect(265, 5, 20,100);
+		  ctx.rect(285, 5, 20,100);
+		  ctx.stroke()
+
+		  //black keys
+		  ctx.beginPath();
+		  ctx.fillStyle = "black";
+
+		  ctx.rect(20, 5, 10,50); //black
+		  ctx.rect(40, 5, 10,50); //black
+
+		  ctx.rect(80, 5, 10,50); //black
+		  ctx.rect(100, 5, 10,50); //black
+		  ctx.rect(120, 5, 10,50); //black
+
+  
+
+		  ctx.rect(160, 5, 10,50); //black 
+		  ctx.rect(180, 5, 10,50); //black
+
+		  ctx.rect(220, 5, 10,50); //black
+		  ctx.rect(240, 5, 10,50); //black
+		  ctx.rect(260, 5, 10,50); //black
+
+		  ctx.rect(300, 5, 5,50); //black
+
+		  ctx.fill();
+
+		  ctx.fillText("C", 12, 120);
+		  ctx.fillText("C", 145 + 6, 120);
+		  ctx.fillText("C", 285 + 6, 120);
+
+	</script>
+
+</body>
+</html>
