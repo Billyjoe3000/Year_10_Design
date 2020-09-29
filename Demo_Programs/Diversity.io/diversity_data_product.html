@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+
+<!------------------------------------------------------------------------------------------------------------->
+
+    <!--Import Google Icon Font-->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <!--Import materialize.css-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+
+    <!--Let browser know website is optimized for mobile-->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
+<!------------------------------------------------------------------------------------------------------------->
+
+    <title>Diversity Data Product</title>
+
+<!------------------------------------------------------------------------------------------------------------->
+
+    <style>
+      .frame {
+        padding-left: 30px;
+        padding-top: 10px;
+      }
+      .header1 {
+        font-size: 18px;
+        text-decoration: underline;
+      }
+      .output {
+        text-transform: capitalize;
+      }
+      #topheader {
+        font-size: 24px;
+        text-decoration: underline;
+      }
+
+
+    </style>
+
+<!------------------------------------------------------------------------------------------------------------->
+
+  </head>
+
+<!------------------------------------------------------------------------------------------------------------->
+
+  <body>
+
+    <div class="frame">
+
+      <div id=topheader>
+
+        <p>Diversity.io Product</p>
+
+      </div>
+
+      <div class="nameInput">
+
+        <p class="header1">First Name</p>
+        <input type="text" id="firstName">
+
+      </div>
+
+      <div class="nameInput">
+
+        <p class="header1">Last Name</p>
+        <input type="text" id="lastName">
+
+      </div>
+
+      <br>
+
+      <div class="submit">
+
+        <input type="button" class="waves-effect waves-light btn" value="Submit" onclick="process();">
+
+      </div>
+
+      <div class="output">
+
+        <br>
+        <p class="header1">Results:</p>
+
+        <p id=processedName>Name: </p>
+        <p id=gender>Gender: </p>
+        <p id=genderProb>Gender Probability: </p>
+        <p id=ethnicity>Ethnicity: </p>
+        <p id=ethnicityProb>Ethnicity Probability: </p>
+
+      </div>
+    </div>
+
+
+<!------------------------------------------------------------------------------------------------------------->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+
+    <script>
+
+      function process(fname,lname) {
+
+        // Getting the input from the text input
+        var fname = document.getElementById('firstName').value
+        var lname = document.getElementById('lastName').value
+        console.log(fname + " " + lname)
+
+        // Creating the URL to send
+        let url = "https://api.diversitydata.io/?fullname=" + fname + "%20" + lname
+        console.log(url);
+
+        // Fetching data from diversity.io
+        fetch(url)
+        .then((resp) => resp.json()) // Transform the data into json
+
+        // Processing the data
+        .then(function data(data) {
+          // Create and append the li's to the ul
+          // console.log(data)
+          // console.log(data.fullname)
+
+          // Showing it on the website
+          document.getElementById("processedName").innerHTML = "Name: " + data.fullname;
+          document.getElementById("gender").innerHTML = "Gender: " + data.gender;
+          document.getElementById("genderProb").innerHTML = "Gender Probability: " + data["gender probability"];
+          document.getElementById("ethnicity").innerHTML = "Ethnicity: " + data.ethnicity;
+          document.getElementById("ethnicityProb").innerHTML = "Ethnicity Probability: " + data["ethnicity probability"];
+
+        });
+      }
+
+    </script>
+
+<!------------------------------------------------------------------------------------------------------------->
+
+
+  </body>
+
+<!------------------------------------------------------------------------------------------------------------->
+
+
+</html>
