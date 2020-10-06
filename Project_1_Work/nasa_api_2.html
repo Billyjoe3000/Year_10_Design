@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html>
+  <head>
+
+<!------------------------------------------------------------------------------------------------------------->
+
+    <!--Import Google Icon Font-->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <!--Import materialize.css-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+
+<!------------------------------------------------------------------------------------------------------------->
+
+  <title>NASA's APOD</title>
+
+<!------------------------------------------------------------------------------------------------------------->
+    
+    <style>
+      .container {
+        padding-top: 20px;
+      }
+
+    </style>
+
+<!------------------------------------------------------------------------------------------------------------->
+
+  </head>
+
+  <body>
+
+    <div class="container">
+      <div class="row">
+        <div class="col s12">
+          <h3>NASA's Astronomy Picture of the Day
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col s12">
+          <div class="input-field">
+            <input id="dateInput" type="date">
+            <label for="dateInput">Date</label>
+            <span class="helper-text" id="helperText">Please Enter a Date to Retrieve NASA's APOD Image</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col s12">
+          <a class="waves-effect waves-light btn" onclick="getapi();">Get Photo</a>
+        </div> 
+      </div>
+
+      <div class="row">
+        <div class="col s12 m6">
+          <div class="card teal">
+            <div class="card-content white-text">
+              <span class="card-title">Image Source:</span>
+            </div>
+            <div class="card-action">
+              <a href="#" id="imgLink"></a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col s12">
+          <img id="image" src="" alt="">
+        </div>
+      </div>
+
+    </div>
+
+<!------------------------------------------------------------------------------------------------------------->
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+      
+    <script> // Getting Images from the Nasa API
+
+      // Check if the date is before today
+      function todayGetTime() { 
+        var todayGetTime = new Date().getTime();
+        return todayGetTime
+      }
+      
+      function dateGetTime(y, m, d) {
+        var dateGetTime = new Date(y, m - 1, d).getTime();
+        return dateGetTime
+      }
+
+      function getapi() {
+
+        // Getting date value from calendar input
+        var date = document.getElementById("dateInput").value;
+        console.log(date);
+
+        // Extracting from string to check if valid
+        var strYear = date.slice(0, 4);
+        var strMonth = date.slice(5, 7);
+        var strDay = date.slice(8);
+        console.log("Year = " + strYear)
+        console.log("Month = " + strMonth)
+        console.log("Day = " + strDay)
+
+        var intYear = parseInt(strYear);
+        var intMonth = parseInt(strMonth);
+        var intDay = parseInt(strDay);
+
+        var todayUnixTime = todayGetTime();
+        var dateUnixTime = dateGetTime(intYear, intMonth, intDay);
+        console.log("today = " + todayUnixTime);
+        console.log("input = " + dateUnixTime);
+
+        // Actually calling the api
+        if (todayUnixTime - dateUnixTime > 0) {
+          var url = 'https://api.nasa.gov/planetary/apod?api_key=V46cZH8IPAeWJJpJYX5sUdY5H1mcSKv3pptm8gXc&hd=True&date=' + date;
+
+          fetch(url)
+          .then((resp) => resp.json())
+
+          // Processing the data
+          .then(function data(data) {
+            console.log(data)
+            console.log(data["url"])
+
+            // Changing the img
+            var imgsrc = document.getElementById("image");
+            imgsrc.src = data["url"];
+
+            // Changing text to success when img fetched
+            document.getElementById("helperText").innerHTML = "Success!"
+            var helperText = document.getElementById("helperText");
+            helperText.style.color = "green";
+
+            document.getElementById("imgLink").href = data["url"];
+            document.getElementById("imgLink").innerHTML = "Click Me!";
+            var link = document.getElementById("imgLink").href;
+            console.log(link)
+
+          });
+
+          // Changing the Text to Orange Processing when it's working
+          document.getElementById("helperText").innerHTML = "Processing..."
+          var helperText = document.getElementById("helperText");
+          helperText.style.color = "orange";
+
+        }
+        else {
+
+          // Error message
+          document.getElementById("helperText").innerHTML = "Date must be between June 16 1995 and Today"
+          var helperText = document.getElementById("helperText");
+          helperText.style.color = "red";
+
+        }
+      }
+
+    </script>
+
+<!------------------------------------------------------------------------------------------------------------->
+
+  </body>
+</html>

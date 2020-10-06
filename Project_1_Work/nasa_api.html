@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+  <head>
+
+<!------------------------------------------------------------------------------------------------------------->
+
+    <!--Import Google Icon Font-->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <!--Import materialize.css-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+
+<!------------------------------------------------------------------------------------------------------------->
+
+  <title>NASA Space Photos</title>
+
+<!------------------------------------------------------------------------------------------------------------->
+    
+    <style>
+
+    </style>
+
+<!------------------------------------------------------------------------------------------------------------->
+
+  </head>
+
+  <body>
+
+    <a class="waves-effect waves-light btn" onclick="getapi();">Get Photo</a>
+    <br>
+    <br>
+    <img id="image" src="" alt="">
+
+<!------------------------------------------------------------------------------------------------------------->
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+      
+    <script> // Getting Images from the Nasa API
+
+      function randomNum(min, max) {
+        return Math.floor(Math.random() * (max - min) ) + min;
+      }
+
+      function getapi() {
+
+        var date = randomNum(1999, 2021) + "-" + randomNum(1, 13) + "-" + randomNum(1, 29)
+        console.log(date)
+
+        var url = 'https://api.nasa.gov/planetary/apod?api_key=V46cZH8IPAeWJJpJYX5sUdY5H1mcSKv3pptm8gXc&hd=True&date=' + date;
+
+        fetch(url)
+        .then((resp) => resp.json()) // Transform the data into json
+
+        // Processing the data
+        .then(function data(data) {
+        console.log(data)
+        console.log(data["url"])
+        
+        var imgsrc = document.getElementById("image");
+        imgsrc.src = data["url"];
+
+        var imgurl = document.getElementById("image");
+        imgurl.alt = data["url"]
+
+        });
+        
+      }
+
+    </script>
+
+<!------------------------------------------------------------------------------------------------------------->
+
+  </body>
+</html>
