@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <!--Import Google Icon Font-->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <!--Import materialize.css-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+
+    <!--Let browser know website is optimized for mobile-->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
+    <style type="text/css">
+      table, th, td {
+        padding: 2px;
+        border-style: solid;
+        border-width: 2px;
+        border-color: #e0e0e0;
+      }
+      #parameterSearch {
+        width: 60%;
+      }
+      #parameterTable {
+        width: 75%;
+        float: right;
+      }
+      #presetsTable {
+        width: 25%;
+      }
+      .materializeTableData {
+        padding-top: 15px;
+      }
+      body {
+        background-color: #eeeeee;
+      }
+      #firstRow {
+        padding-top: 30px;
+      }
+      .paramSlider {
+        width: 75%;
+      }
+
+    </style>
+
+    <title>Stocks Comparison</title>
+  </head>
+
+  <body>
+
+    <!-- Nav Bar -->
+    <nav class="light-blue">
+      <div class="nav-wrapper">
+        <a href="#" class="brand-logo">Logo</a>
+        <ul id="nav-mobile" class="right hide-on-med-and-down">
+          <li><a href="#">Page 1</a></li>
+          <li><a href="#">Page 2</a></li>
+          <li><a href="#">Page 3</a></li>
+        </ul>
+      </div>
+    </nav>
+
+    <!-- Data Entry Section -->
+    <div class="container">
+
+      <div id="firstRow" class="row">
+
+        <!-- Company Selector Card -->
+        <div class="col s7">
+          <div class="card white">
+            <div class="card-content">
+              <span class="card-title">Company Selector</span>
+            </div>
+            <div class="card-action">
+              <div class="input-field">
+                <i class="material-icons prefix">search</i>
+                <input type="text" id="companyInput" class="autocomplete1">
+                <label for="companyInput">Company</label>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Benchmark Selector Card -->
+        <div class="col s5">
+          <div class="card white">
+            <div class="card-content">
+              <span class="card-title">Benchmark Selector</span>
+            </div>
+            <div class="card-action">
+              <div class="input-field">
+                <select>
+                  <option value="" disabled selected>Choose your option</option>
+                  <option value="1">Preset 1</option>
+                  <option value="2">Preset 2</option>
+                  <option value="3">Preset 3</option>
+                </select>
+                <label>Benchmark</label>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Second row of cards -->
+      <div class="row">
+
+        <!-- Parameters selector card -->
+        <div class="col s7">
+          <div class="card white">
+            <div class="card-content">
+              <span class="card-title">Grading Parameters</span>
+            </div>
+            <div class="card-action">
+              <div class="input-field">
+                <i class="material-icons prefix">insert_chart</i>
+                <input type="text" id="paramInput" class="autocomplete2">
+                <label for="paramInput">Parameters</label>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Presets selector card -->
+        <div class="col s5">
+          <div class="card white">
+            <div class="card-content">
+              <span class="card-title">Presets</span>
+            </div>
+            <div class="card-action">
+              <div class="input-field">
+                <select>
+                  <option value="" disabled selected>Choose your option</option>
+                  <option value="1">Preset 1</option>
+                  <option value="2">Preset 2</option>
+                  <option value="3">Preset 3</option>
+                </select>
+                <label>Presets</label>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Custom params appended -->
+        <div class="col s12">
+          <ul id="paramAppend" class="collection">
+
+          </ul>
+        </div>
+
+      </div>
+
+      <a class="waves-effect waves-light btn" onclick="fetchAPI()">test button</a>
+    </div>
+
+
+    <!--JavaScript at end of body for optimized loading-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+
+    <script src="scripts/index_3.js"></script>
+
+  </body>
+</html>

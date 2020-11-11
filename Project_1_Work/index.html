@@ -34,10 +34,13 @@
       }
 
     </style>
+
+    <title>Stocks Comparison</title>
   </head>
 
   <body>
 
+    <!-- Nav Bar -->
     <nav class="light-blue">
       <div class="nav-wrapper">
         <a href="#" class="brand-logo">Logo</a>
@@ -49,14 +52,16 @@
       </div>
     </nav>
 
+    <!-- Data Entry Section -->
     <div class="row">
 
+      <!-- Parameter Entry -->
       <table id="parameterTable">
         <tr>
           <td id="parameterSearch" class="materializeTableData">
             <div class="input-field col s11">
               <i class="material-icons prefix">search</i>
-              <input type="text" id="parameterInput" class="autocomplete">
+              <input type="text" id="parameterInput" class="autocomplete1">
               <label for="parameterInput">Parameter</label>
             </div>
           </td>
@@ -66,6 +71,7 @@
         </tr>
       </table>
 
+      <!-- Presets & company filters Entry -->
       <table id="presetsTable">
         <tr>
           <td class="materializeTableData">
@@ -97,29 +103,33 @@
           <td id="marketCapInput">
             <p>
               <label>
-                <input type="checkbox" class="filled-in" />
+                <input id="smallCap" type="checkbox" class="filled-in" />
                 <span>Small Cap ($amount)</span>
               </label>
             </p>
             <p>
               <label>
-                <input type="checkbox" class="filled-in" />
+                <input id="medCap" type="checkbox" class="filled-in" />
                 <span>Med Cap ($amount)</span>
               </label>
             </p>
             <p>
               <label>
-                <input type="checkbox" class="filled-in" />
+                <input id="largeCap" type="checkbox" class="filled-in" />
                 <span>Large Cap ($amount)</span>
               </label>
             </p>
             <p>
               <label>
-                <input type="checkbox" class="filled-in" />
+                <input id="hugeCap" type="checkbox" class="filled-in" />
                 <span>Huge Cap ($amount)</span>
               </label>
             </p>
+          </td>
+        </tr>
       </table>
+
+      <a class="waves-effect waves-light btn" onclick="fetchAPI()">test button</a>
 
 
     </div>
@@ -128,9 +138,7 @@
     <!--JavaScript at end of body for optimized loading-->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
 
-    <script type="text/javascript">
-      
-      M.AutoInit();
-    </script>
+    <script src="scripts/index.js"></script>
+
   </body>
 </html>

@@ -3262,7 +3262,29 @@
 
       document.addEventListener('DOMContentLoaded', function() {
         var elems = document.querySelectorAll('.autocomplete');
-        var instances = M.Autocomplete.init(elems, {data:tickers});
+        var instances = M.Autocomplete.init(elems, {data:tickers, onAutocomplete: function() {
+          console.log("test");
+
+          symbol = document.getElementById("ticker").value;
+
+        var url = "https://cloud.iexapis.com/stable/stock/" + symbol + "/quote?token=pk_d5000f865f384e2b9f81874b746d51a4&period=annual";
+
+        //Fetch API Data
+        fetch(url)
+        .then((resp) => resp.json())
+
+        // Processing the data
+        .then(function data(data) {
+          console.log(data)
+
+          document.getElementById("latestPrice").innerHTML = "$" + data["iexRealtimePrice"];
+          document.getElementById("dollarPriceChange").innerHTML = "$" + data["change"];
+          document.getElementById("percentagePriceChange").innerHTML = data["changePercent"] * 100 + "%";
+          document.getElementById("peRatio").innerHTML = data["peRatio"];
+          document.getElementById("volume").innerHTML = data["avgTotalVolume"];
+
+        });
+        }});
       });
 
     </script>
