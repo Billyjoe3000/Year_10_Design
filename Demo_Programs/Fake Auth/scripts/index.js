@@ -1,3 +1,13 @@
+
+var options = {};
+
+document.addEventListener('DOMContentLoaded', function() {
+    var elems = document.querySelectorAll('.modal');
+    var instances = M.Modal.init(elems, options);
+  });
+
+
+
 var uNames = ["user1@test.com","user2@test.com"];
 var pWords = ["pword1","pword2"];
 

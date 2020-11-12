@@ -38,6 +38,9 @@
       .clearfix {
         overflow: hidden;
       }
+      #submitButton {
+        float: right;
+      }
 
     </style>
 
@@ -155,8 +158,16 @@
           </ul>
         </div>
 
+      </div> <!-- row end -->
+      <div class="row">
+        <div class="col s12">
+          <a class="waves-effect waves-light btn col s2" onclick="test()">Reset</a>
+          <a id="submitButton" class="waves-effect waves-light btn col s10" onclick="test()">Submit</a>
+        </div>
       </div>
 
+      <br>
+      <br>
       <a class="waves-effect waves-light btn" onclick="test()">test button</a>
     </div> <!-- container end -->
 
@@ -164,7 +175,7 @@
     <!--JavaScript at end of body for optimized loading-->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
 
-    <script src="scripts/index_3.js"></script>
+    <script src="scripts/index_4.js"></script>
 
   </body>
 </html>

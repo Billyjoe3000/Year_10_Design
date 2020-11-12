@@ -10,6 +10,7 @@ function test() {
 	// console.log(document.getElementById("slider1").value) //. dom for slider tags
 
 }
+
 //*****************************************************************
 
 function main() {
@@ -69,7 +70,6 @@ function usedParams(currentInput) {
 	// console.log("usedParams running")
 	// console.log(params[0]["name"])
 
-
 	for (i = 0; i < params.length; i++) {
 
 		if (currentInput == params[i]["name"] && params[i]["used"] == true) {
@@ -89,7 +89,7 @@ function usedParams(currentInput) {
 // adding a param to the param table (the collection)
 var paramCount = 1;
 
-function appendParam() {
+function appendParam(input) {
 
 	if (usedParams(input) == true) {
 			console.log("param error");
@@ -105,7 +105,7 @@ function appendParam() {
 							"<input type='range' id='" + "slider" + paramCount + "' style='width: 75%; float: right;' min='0' max='100' />" + 
 						"</p>" + 
 					"</form>" + 
-					"<p id='" + "selectedParam" + paramCount + "'>" + currentInput + "</p>" +
+					"<p id='" + "selectedParam" + paramCount + "'>" + input + "</p>" +
 				"</div>" + 
 			"</li>"
 		;
@@ -190,36 +190,9 @@ var autocomplete2Options = {data: {
 	// function to run on autocomplete
 	onAutocomplete: function() {
 		// console.log("param autocomplete run");
-
 		// checking what the current input is
 		var currentInput = document.getElementById("paramInput").value;
 		appendParam(currentInput);
-
-		// prob call function usedParams(currentInput)
-		var paramBeenUsed = usedParams(currentInput);
-		// console.log("usedParams returned value");
-		// console.log(paramBeenUsed)
-
-		if (paramBeenUsed == true) {
-			// console.log("param error");
-		}
-		else {
-			// console.log("param success");
-			// the actual code to append in string form
-			document.getElementById("paramAppend").innerHTML += 
-				"<li id='" + "param" + paramCount + "' class='collection-item' style='overflow: auto; padding-bottom: 20px;'>" + 
-					"<div>" + 
-						"<form action='#'>" + 
-							"<p class='range-field'>" + 
-								"<input type='range' id='" + "slider" + paramCount + "' style='width: 75%; float: right;' min='0' max='100' />" + 
-							"</p>" + 
-						"</form>" + 
-						"<p id='" + "selectedParam" + paramCount + "'>" + currentInput + "</p>" +
-					"</div>" + 
-				"</li>"
-			;
-			paramCount += 1;
-		}
 	}
 }
 
