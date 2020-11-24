@@ -60,7 +60,7 @@
       <div id="firstRow" class="row">
 
         <!-- Company Selector Card -->
-        <div class="col s7">
+        <div class="col s12">
           <div class="card white">
             <div class="card-content">
               <span class="card-title">Company Selector</span>
@@ -70,26 +70,6 @@
                 <i class="material-icons prefix">search</i>
                 <input type="text" id="companyInput" class="autocomplete1">
                 <label for="companyInput">Company</label>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <!-- Benchmark Selector Card -->
-        <div class="col s5">
-          <div class="card white">
-            <div class="card-content">
-              <span class="card-title">Benchmark Selector</span>
-            </div>
-            <div class="card-action">
-              <div class="input-field">
-                <select>
-                  <option value="" disabled selected>Choose your option</option>
-                  <option value="1">Preset 1</option>
-                  <option value="2">Preset 2</option>
-                  <option value="3">Preset 3</option>
-                </select>
-                <label>Benchmark</label>
               </div>
             </div>
           </div>
@@ -142,16 +122,30 @@
             </div>
           </div>
         </div>
-     
+      </div> <!-- row end -->
 
+      <div class="row">
         <!-- Custom params appended -->
         <div class="col s12">
-          <ul id="paramAppend" class="collection">
+          <div class="card white">
 
-          </ul>
+            <div class="card-content">
+              <div class="row">
+                <span class="card-title col s6">Parameters</span>
+                <span class="card-title col s6">Weight Adjustment</span>
+              </div>
+            </div>
+            <div class="card-action">
+              <ul id="paramAppend" class="collection">
+
+              </ul>
+            </div>
+
+          </div>
         </div>
+      </div>
 
-      </div> <!-- row end -->
+      
       <div class="row">
         <div class="col s12">
           <a class="waves-effect waves-light btn col s2 light-blue" onclick="test()">Reset</a>
@@ -162,14 +156,22 @@
       <div class="row">
         <!-- data output appended -->
         <div class="col s12">
-          <ul id="dataAppend" class="collection">
+          <div class="card white">
+            <div class="card-content">
+              <div class="row">
+                <span class="card-title col s6">Parameters</span>
+                <span class="card-title col s4">Value</span>
+                <span class="card-title col s2">Grade</span>
+              </div>
+            </div>
+            <div class="card-action">
+              <ul id="dataAppend" class="collection">
 
-          </ul>
+              </ul>
+            </div>
+          </div>
         </div>
       </div>
-
-      <br>
-      <a class="waves-effect waves-light btn col s2 light-blue" onclick="test()">test button</a>
 
     </div> <!-- container end -->
 
@@ -177,7 +179,7 @@
     <!--JavaScript at end of body for optimized loading-->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
 
-    <script src="scripts/index_4.js"></script>
+    <script src="scripts/index_5.js"></script>
 
   </body>
 </html>
