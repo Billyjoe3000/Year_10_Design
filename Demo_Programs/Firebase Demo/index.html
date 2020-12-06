@@ -2,11 +2,56 @@
 <html>
   <head>
 
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+
+    <!--Let browser know website is optimized for mobile-->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
     <title>Firebase Demo</title>
   </head>
 
   <body>
+    <div class="container">
+      <div class="row">
+        <div class="col s12">
+          <a class="waves-effect waves-light btn">Once</a>
+        </div>
+      </div>
 
+      <div class="row">
+        <div class="col s12">
+          <p>Once Data Display</p>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="input-field col s12">
+          <input id="input_name" type="text" class="validate">
+          <label for="input_name">Input Name</label>
+        </div>
+
+        <div class="input-field col s12">
+          <input id="input_food" type="text" class="validate">
+          <label for="input_food">Input food</label>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col s12">
+          <a class="waves-effect waves-light btn">Submit</a>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col s12" id="live">
+          <p>Live Update</p>
+        </div>
+      </div>
+
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
 
     <!-- The core Firebase JS SDK is always required and must be listed first -->
     <script src="https://www.gstatic.com/firebasejs/8.1.1/firebase-app.js"></script>
@@ -36,6 +81,12 @@
       // firebase.analytics();
 
       var database = firebase.database();
+      var updateDisplay = database.ref('users/');
+
+      updateDisplay.on('value', (snapshot) =>{
+        const data = snapshot.val();
+        console.log(data);
+      });
       
 
     </script>
