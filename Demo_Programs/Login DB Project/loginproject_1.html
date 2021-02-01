@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+
+    <!--Let browser know website is optimized for mobile-->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
+    <title>Login DB</title>
+  </head>
+
+  <body>
+
+    <nav>
+      <div class="nav-wrapper">
+        <a href="#" class="brand-logo">Home</a>
+        <ul id="nav-mobile" class="right hide-on-med-and-down">
+          <li><a href="#login_modal" id="loginButton" class="modal-trigger">Login</a></li>
+          <li><a href="#" id="logoutButton" style="display: none">Logout</a></li>
+          <li><a href="learnmore_1.html" id="learnMoreButton" style="display: none">Learn More</a></li>
+          <li><a href="elements_1.html" id="elementsButton" style="display: none">Elements</a></li>
+        </ul>
+      </div>
+    </nav>
+
+      <!-- Modal Structure -->
+    <div id="login_modal" class="modal">
+      <div class="modal-content">
+
+        <form id="loginForm" class="col s12">
+          <div class="row">
+            <div class="input-field col s12">
+              <input placeholder="Username" id="username" type="text" autocomplete="" required class="validate">
+
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="input-field col s12">
+              <input placeholder="Password" id="password" type="password" autocomplete="" required class="validate">
+            </div>
+          </div>
+
+          <button class="btn z-depth-0">Login</button>
+        </form>
+        
+      </div>
+
+      <div class="modal-footer">
+
+        <div class="row">
+          <a class="waves-effect waves-light btn z-depth-0">Create New Account</a>
+        </div>
+
+      </div>
+
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+
+    <script src="auth.js"></script>
+
+    <script type="text/javascript">
+        options = ""
+
+        document.addEventListener('DOMContentLoaded', function() {
+          var elems = document.querySelectorAll('.modal');
+          var instances = M.Modal.init(elems, options);
+        });
+
+    </script>
+
+  </body>
+</html>
