@@ -32,8 +32,42 @@
 
     </div>
 
-    <script type="text/javascript">
-      
+    <!-- The core Firebase JS SDK is always required and must be listed first -->
+    <script src="https://www.gstatic.com/firebasejs/8.2.5/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.2.5/firebase-database.js"></script>
+
+    <!-- TODO: Add SDKs for Firebase products that you want to use
+         https://firebase.google.com/docs/web/setup#available-libraries -->
+
+    <script>
+      const elementCards = document.getElementById("elementCards");
+
+      // Your web app's Firebase configuration
+      var firebaseConfig = {
+        apiKey: "AIzaSyD6EW2LZ2cniyqQNYnbGDQ7DkLqBf6TC7Q",
+        authDomain: "elements-demo-ac374.firebaseapp.com",
+        databaseURL: "https://elements-demo-ac374-default-rtdb.firebaseio.com",
+        projectId: "elements-demo-ac374",
+        storageBucket: "elements-demo-ac374.appspot.com",
+        messagingSenderId: "378995774681",
+        appId: "1:378995774681:web:bd205d58b10bbcabc09ac8"
+      };
+      // Initialize Firebase
+      firebase.initializeApp(firebaseConfig);
+      var database = firebase.database();
+
+      var data = "";
+
+      database.ref().once('value').then((snapshot) => {
+        data = snapshot.val();
+        console.log(data)
+
+        for (i = 0; i < (data["elements"].length - 1); i++) {
+          elementCards.innerHTML += createCard(data["elements"][(i + 1)]);
+
+        }
+      });
+
       function createCard(elementObject) {
         
         const card = 
@@ -55,59 +89,11 @@
           </div>
         `;
 
-        return card
+        return card;
       }
-
-      const elementCards = document.getElementById("elementCards");
-
-      var data = 
-      { 
-        "elements": [
-          { 
-            "name": "Hydogen",
-            "symbol": "H", 
-            "number": 1, 
-            "atomicMass": 1.007947, 
-            "img": "LINK",
-            "fact": "Hydrogen is the most abundent element in the universe"
-          },
-          {
-            "name": "Helium",
-            "symbol": "He",
-            "number": 2, 
-            "atomicMass": 4.002602, 
-            "img": "LINK",
-            "fact": "Helium is a colourless, tasteless and odorless gas"
-
-          },
-          {
-            "name": "Lithium",
-            "symbol": "Li",
-            "number": 3, 
-            "atomicMass": 6.941, 
-            "img": "LINK",
-            "fact": "Used to treat major depressive disorders."
-
-          },
-          {
-            "name": "Beryllium",
-            "symbol": "Be",
-            "number": 4, 
-            "atomicMass": 9.012182, 
-            "img": "LINK",
-            "fact": "beryllium is used to make cell phones, missiles and aircrafts.."
-
-          }
-        ]
-      }
-
-      for (i = 0; i < data["elements"].length; i++) {
-        elementCards.innerHTML += createCard(data["elements"][i]);
-
-      }
-
 
     </script>
-  
+
   </body>
 </html>
+
